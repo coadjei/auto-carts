@@ -1,0 +1,69 @@
+{{extend 'layout.html'}}
+<div class="container-fluid">
+	<div class="jumbotron text-center">
+		<h1>WELCOME TO THE AUTO BIDDING MARKET</h1>
+		<h3>Order for your ready to be shipped cars from (US, and Canada), we help you bid and ship used and salvage cars from (US, and Canada).</h3>
+		<p>
+			<a class="btn btn-danger btn-lg" style="color: white;">Call us now: 0209368106</a>
+		</p>
+	</div>
+</div>
+
+<div class="container">
+	<div class="row">
+		<h4>Recent Listings</h4>
+		<hr>
+	</div>
+</div>
+
+<div class="container">
+	<div class="row">
+	
+		
+		<!-- <div class="shop-item"> -->
+			{{ for x in rows: }}
+			<div class="col-6" style="margin: 20px 0;">
+				<div class="col-10">
+					<img
+						class="img-responsive img-thumbnail"
+		     			src="{{=URL('default','download', args=x.product_image)}}" alt="image" 
+		     		/>	
+				</div>
+				<div class="col-8">
+					<p class="lead">
+				  		<b>{{=x.product_name}}</b>
+					</p>
+					<p>
+						Price: {{=x.product_price}}
+					</p>
+					<p>
+						{{=x.shop_name}}
+					</p>
+					<p>
+						{{=x.shop_address}}
+					</p>
+				    <p>
+				    	<a href="{{=x.shop_website}}" target="_new">{{=x.shop_website}}</a>
+				    </p>
+				    <p>
+				    	  <form method=post action="proc">
+				    	  	<input type="hidden" name="productId" value="{{=x.id}}" />
+				    	  	<input type="text" size=2 name="qty" value=1 />
+				    	  	<input class="btn-primary" type="submit" value="Add to Cart">
+				    	  </form>
+				     </p>
+				     <p>
+				     	  Posted by: &nbsp; {{ =userdict[x.created_by] }}
+				     </p>
+		    
+
+				</div>
+			</div>
+
+			{{ pass }}
+		</div>
+	</div>
+	<a href="post"> Post </a>
+</div>
+
+

@@ -1,0 +1,334 @@
+(dp1
+S'output'
+p2
+S'missing "pass" in view'
+p3
+sS'layer'
+p4
+S'ParserContainer'
+p5
+sS'code'
+p6
+S'response.write(\'<!DOCTYPE html>\\n<html lang="en">\\n<head>\\n  <title>Auto-Cart</title>\\n  <meta charset="utf-8">\\n  <meta name="viewport" content="width=device-width, initial-scale=1">\\n  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">\\n  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>\\n  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>\\n  <style>\\n    /* Remove the navbar\\\'s default margin-bottom and rounded borders */ \\n    .navbar {\\n      margin-bottom: 0;\\n      border-radius: 0;\\n    }\\n    \\n    /* Add a gray background color and some padding to the footer */\\n    footer {\\n      background-color: #f2f2f2;\\n      padding: 25px;\\n    }\\n    \\n  .carousel-inner img {\\n      width: 100%; /* Set width to 100% */\\n      margin: auto;\\n      min-height:200px;\\n  }\\n\\n  /* Hide the carousel text when the screen is less than 600 pixels wide */\\n  @media (max-width: 600px) {\\n    .carousel-caption {\\n      display: none; \\n    }\\n  }\\n  </style>\\n</head>\\n<body>\\n\\n<nav class="navbar navbar-inverse">\\n  <div class="container-fluid">\\n    <div class="navbar-header">\\n      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">\\n        <span class="icon-bar"></span>\\n        <span class="icon-bar"></span>\\n        <span class="icon-bar"></span>                        \\n      </button>\\n      <a class="navbar-brand" href="#">Logo</a>\\n    </div>\\n     </ul>\\n         <form class="form-inline my-2 my-lg-0">\\n             <input class="form-control mr-sm-2" type="text" placeholder="Search">\\n         </form>\\n         \', escape=False)\nif \'auth\' in globals():\n    response.write(\'\\n    <div class="collapse navbar-collapse" id="myNavbar">\\n      <ul class="nav navbar-nav navbar-right">\\n        <li class="dropdown">\\n          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span>\', escape=False)\n    if auth.user:\n        response.write(auth.user.first_name)\n    else:\n        response.write(\'LOGIN\', escape=False)\n        pass\n    response.write(\'</a>\\n          <ul class="dropdown-menu">\\n            <li role="separator" class="divider"></li>\\n            \', escape=False)\n    if auth.user:\n        response.write(\'\\n            <li><a href="#">Action</a></li>\\n            <li><a href="#">Another action</a></li>\\n            <li><a href="#">Something else here</a></li>\\n            <li role="separator" class="divider"></li>\\n            <li><a href="#">One more separated link</a></li>\\n          </ul>\\n        </li>\\n      </ul>\\n      \', escape=False)\n        pass\n    response.write(\'\\n      <!-- \', escape=False)\n    if \'auth\' in globals():\n        response.write(\'\\n      <ul class="nav navbar-nav">\\n          <li class="dropdown">\\n            <a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">\\n              \', escape=False)\n        if auth.user:\n            response.write(auth.user.first_name)\n        else:\n            response.write(\'LOGIN\', escape=False)\n            pass\n        response.write(\'\\n            </a>\\n            <li role="separator" class="divider"></li>\\n              \', escape=False)\n        if auth.user:\n            response.write(\'\\n              <a class="dropdown-item" href="\', escape=False)\n            response.write(URL(\'default\',\'user/profile\'))\n            response.write(\'">\', escape=False)\n            response.write(T(\'Profile\'))\n            response.write(\'</a>\\n              \', escape=False)\n            if \'change_password\' not in auth.settings.actions_disabled:\n                response.write(\'\\n              <a class="dropdown-item" href="\', escape=False)\n                response.write(URL(\'default\',\'user/change_password\'))\n                response.write(\'">\', escape=False)\n                response.write(T(\'Change Password\'))\n                response.write(\'</a>\\n              \', escape=False)\n                pass\n            response.write(\'\\n              <a class="dropdown-item" href="\', escape=False)\n            response.write(URL(\'default\',\'user/logout\'))\n            response.write(\'">\', escape=False)\n            response.write(T(\'Logout\'))\n            response.write(\'</a>\\n              \', escape=False)\n        else:\n            response.write(\'\\n              <a class="dropdown-item" href="\', escape=False)\n            response.write(URL(\'default\',\'user/login\'))\n            response.write(\'">\', escape=False)\n            response.write(T(\'Login\'))\n            response.write(\'</a>\\n              \', escape=False)\n            if \'register\' not in auth.settings.actions_disabled:\n                response.write(\'\\n              <a class="dropdown-item" href="\', escape=False)\n                response.write(URL(\'default\',\'user/register\'))\n                response.write(\'">\', escape=False)\n                response.write(T(\'Sign up\'))\n                response.write(\'</a>\\n              \', escape=False)\n                pass\n            response.write(\'\\n              \', escape=False)\n            if \'retrieve_password\' not in auth.settings.actions_disabled:\n                response.write(\'\\n              <a class="dropdown-item" href="\', escape=False)\n                response.write(URL(\'default\',\'user/retrieve_password\'))\n                response.write(\'">\', escape=False)\n                response.write(T(\'Lost Password\'))\n                response.write(\'</a>\\n              \', escape=False)\n                pass\n            response.write(\'\\n              \', escape=False)\n            pass\n        response.write(\'\\n            </div>\\n          </li>\\n        </ul>\\n        \', escape=False)\n        pass\n    response.write(\' -->\\n      <!-- <ul class="nav navbar-nav">\\n        <li class="active"><a href="view">Home</a></li>\\n        <li><a href="#">List</a></li>\\n        <li><a href="#">Post</a></li>\\n        <li><a href="#">Contact</a></li>\\n      </ul>\\n      <ul class="nav navbar-nav navbar-right">\\n        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>\\n      </ul> -->\\n    </div>\\n  </div>\\n</nav>\\n\\n\', escape=False)\n    response.write(\'\\n\\n<div class="container">\\n\\t<div class="row">\\n\\t      <h2>The Auto Market(Where Dealers and Buyers Meet)</h2></\\n\\t\\t<hr/>\\n\\t\\t\\n\\t\\t<div class="col-md-12 shop-item">\\n\\t\\t\\t\', escape=False)\n    for x in rows:\n        response.write(\'\\n\\t\\t\\t<div class="col-md-6" style="margin: 20px 0;">\\n\\t\\t\\t\\t<div class="col-md-4">\\n\\t\\t\\t\\t\\t<img\\n\\t\\t\\t\\t\\t\\tclass="img-responsive img-thumbnail"\\n\\t\\t     \\t\\t\\tsrc="\', escape=False)\n        response.write(URL(\'default\',\'download\', args=x.product_image))\n        response.write(\'" alt="image" \\n\\t\\t     \\t\\t/>\\t\\n\\t\\t\\t\\t</div>\\n\\t\\t\\t\\t<div class="col-md-8">\\n\\t\\t\\t\\t\\t<p class="lead">\\n\\t\\t\\t\\t  <b>\', escape=False)\n        response.write(x.product_name)\n        response.write(\'</b>\\n\\t\\t\\t</p>\\n\\t\\t\\t<p>\\n\\t\\t\\t\\tPrice: \', escape=False)\n        response.write(x.product_price)\n        response.write(\'\\n\\t\\t\\t</p>\\n\\t\\t\\t<p>\\n\\t\\t\\t\\t\', escape=False)\n        response.write(x.shop_name)\n        response.write(\'\\n\\t\\t\\t</p>\\n\\t\\t\\t<p>\\n\\t\\t\\t\\t\', escape=False)\n        response.write(x.shop_address)\n        response.write(\'\\n\\t\\t\\t</p>\\n\\t\\t    <p>\\n\\t\\t    \\t<a href="\', escape=False)\n        response.write(x.shop_website)\n        response.write(\'" target="_new">\', escape=False)\n        response.write(x.shop_website)\n        response.write(\'</a>\\n\\t\\t    </p>\\n\\t\\t    <p>\\n\\t\\t    \\t  <form method=post action="proc">\\n\\t\\t    \\t  \\t<input type="hidden" name="productId" value="\', escape=False)\n        response.write(x.id)\n        response.write(\'" />\\n\\t\\t    \\t  \\t<input type="text" size=2 name="qty" value=1 />\\n\\t\\t    \\t  \\t<input class="btn-primary" type="submit" value="Add to Cart">\\n\\t\\t    \\t  </form>\\n\\t\\t     </p>\\n\\t\\t     <p>\\n\\t\\t     \\t  Posted by: &nbsp; \', escape=False)\n        response.write(userdict[x.created_by])\n        response.write(\'\\n\\t\\t     </p>\\n\\t\\t    \\n\\n\\t\\t\\t\\t</div>\\n\\t\\t\\t</div>\\n\\n\\t\\t\\t\', escape=False)\n        pass\n    response.write(\'\\n\\t\\t</div>\\n\\t</div>\\n\\t<a href="post"> Post </a>\\n</div>\\n\\n\\n\', escape=False)\n    response.write(\'\\n\\n<footer class="container-fluid text-center">\\n  <p>Footer Text</p>\\n</footer>\\n\\n</body>\\n</html>\\n\\n\', escape=False)'
+p7
+sS'snapshot'
+p8
+(dp9
+S'exception'
+p10
+(dp11
+S'__module__'
+p12
+S"'gluon.rocket'"
+p13
+sS'__getslice__'
+p14
+S"<method-wrapper '__getslice__' of SocketTimeout object>"
+p15
+sS'__str__'
+p16
+S"<method-wrapper '__str__' of SocketTimeout object>"
+p17
+sS'__reduce__'
+p18
+S'<built-in method __reduce__ of SocketTimeout object>'
+p19
+sS'__dict__'
+p20
+S'{}'
+p21
+sS'__sizeof__'
+p22
+S'<built-in method __sizeof__ of SocketTimeout object>'
+p23
+sS'__weakref__'
+p24
+S'None'
+p25
+sS'message'
+p26
+S"'Socket timed out before request.'"
+p27
+sS'__init__'
+p28
+S"<method-wrapper '__init__' of SocketTimeout object>"
+p29
+sS'__setattr__'
+p30
+S"<method-wrapper '__setattr__' of SocketTimeout object>"
+p31
+sS'__reduce_ex__'
+p32
+S'<built-in method __reduce_ex__ of SocketTimeout object>'
+p33
+sS'__new__'
+p34
+S'<built-in method __new__ of type object>'
+p35
+sS'__format__'
+p36
+S'<built-in method __format__ of SocketTimeout object>'
+p37
+sS'__class__'
+p38
+S"<class 'gluon.rocket.SocketTimeout'>"
+p39
+sS'__doc__'
+p40
+S"'Exception for when a socket times out between requests.'"
+p41
+sS'__getitem__'
+p42
+S"<method-wrapper '__getitem__' of SocketTimeout object>"
+p43
+sS'__setstate__'
+p44
+S'<built-in method __setstate__ of SocketTimeout object>'
+p45
+sS'__getattribute__'
+p46
+S"<method-wrapper '__getattribute__' of SocketTimeout object>"
+p47
+sS'args'
+p48
+S"('Socket timed out before request.',)"
+p49
+sS'__subclasshook__'
+p50
+S'<built-in method __subclasshook__ of type object>'
+p51
+sS'__unicode__'
+p52
+S'<built-in method __unicode__ of SocketTimeout object>'
+p53
+sS'__delattr__'
+p54
+S"<method-wrapper '__delattr__' of SocketTimeout object>"
+p55
+sS'__repr__'
+p56
+S"<method-wrapper '__repr__' of SocketTimeout object>"
+p57
+sS'__hash__'
+p58
+S"<method-wrapper '__hash__' of SocketTimeout object>"
+p59
+ssS'evalue'
+p60
+S'Socket timed out before request.'
+p61
+sS'frames'
+p62
+(lp63
+(dp64
+S'file'
+p65
+S'/Users/caponenoreaga/Desktop/Code Train Lectures/Codetrain/web2py app/web2py.app/Contents/Resources/gluon/rocket.py'
+p66
+sS'dump'
+p67
+(dp68
+sS'lnum'
+p69
+I1319
+sS'lines'
+p70
+(dp71
+I1314
+S'            # Enter connection serve loop'
+p72
+sI1315
+S'            while True:'
+p73
+sI1316
+S'                if __debug__:'
+p74
+sI1317
+S"                    self.err_log.debug('Serving a request')"
+p75
+sI1318
+S'                try:'
+p76
+sI1319
+S'                    self.run_app(conn)'
+p77
+sI1320
+S'                except:'
+p78
+sI1321
+S'                    exc = sys.exc_info()'
+p79
+sI1322
+S'                    handled = self._handleError(*exc)'
+p80
+sI1323
+S'                    if handled:'
+p81
+ssS'call'
+p82
+S'(self=<WSGIWorker(Thread-54, started daemon 123145422921728)>)'
+p83
+sS'func'
+p84
+S'run'
+p85
+sa(dp86
+g65
+S'/Users/caponenoreaga/Desktop/Code Train Lectures/Codetrain/web2py app/web2py.app/Contents/Resources/gluon/rocket.py'
+p87
+sg67
+(dp88
+sg69
+I1812
+sg70
+(dp89
+I1807
+S'        else:'
+p90
+sI1808
+S'            sock_file = conn.makefile(BUF_SIZE)'
+p91
+sI1809
+S''
+sI1810
+S'        try:'
+p92
+sI1811
+S'            # Read the headers and build our WSGI environment'
+p93
+sI1812
+S'            self.environ = environ = self.build_environ(sock_file, conn)'
+p94
+sI1813
+S''
+sI1814
+S'            # Handle 100 Continue'
+p95
+sI1815
+S"            if environ.get('HTTP_EXPECT', '') == '100-continue':"
+p96
+sI1816
+S"                res = environ['SERVER_PROTOCOL'] + ' 100 Continue\\r\\n\\r\\n'"
+p97
+ssg82
+S'(self=<WSGIWorker(Thread-54, started daemon 123145422921728)>, conn=<gluon.rocket.Connection object>)'
+p98
+sg84
+S'run_app'
+p99
+sa(dp100
+g65
+S'/Users/caponenoreaga/Desktop/Code Train Lectures/Codetrain/web2py app/web2py.app/Contents/Resources/gluon/rocket.py'
+p101
+sg67
+(dp102
+sg69
+I1632
+sg70
+(dp103
+I1632
+S'        request = self.read_request_line(sock_file)'
+p104
+sI1633
+S''
+sI1634
+S'        # Copy the Base Environment'
+p105
+sI1635
+S'        environ = self.base_environ.copy()'
+p106
+sI1636
+S''
+sI1627
+S'                                      "wsgiorg.futures": executor.futures})'
+p107
+sI1628
+S''
+sI1629
+S'    def build_environ(self, sock_file, conn):'
+p108
+sI1630
+S'        """ Build the execution environment. """'
+p109
+sI1631
+S'        # Grab the request line'
+p110
+ssg82
+S'(self=<WSGIWorker(Thread-54, started daemon 123145422921728)>, sock_file=<socket._fileobject object>, conn=<gluon.rocket.Connection object>)'
+p111
+sg84
+S'build_environ'
+p112
+sa(dp113
+g65
+S'/Users/caponenoreaga/Desktop/Code Train Lectures/Codetrain/web2py app/web2py.app/Contents/Resources/gluon/rocket.py'
+p114
+sg67
+(dp115
+sg69
+I1383
+sg70
+(dp116
+I1378
+S''
+sI1379
+S'                d = sock_file.readline()'
+p117
+sI1380
+S'                if PY3K:'
+p118
+sI1381
+S"                    d = d.decode('ISO-8859-1')"
+p119
+sI1382
+S'        except socket.timeout:'
+p120
+sI1383
+S"            raise SocketTimeout('Socket timed out before request.')"
+p121
+sI1384
+S'        except TypeError:'
+p122
+sI1385
+S'            raise SocketClosed('
+p123
+sI1386
+S"                'SSL bug caused closure of socket.  See '"
+p124
+sI1387
+S'                \'"https://groups.google.com/d/topic/web2py/P_Gw0JxWzCs".\')'
+p125
+ssg82
+S'(self=<WSGIWorker(Thread-54, started daemon 123145422921728)>, sock_file=<socket._fileobject object>)'
+p126
+sg84
+S'read_request_line'
+p127
+sasS'pyver'
+p128
+S'Python 2.7.3: /Users/caponenoreaga/Desktop/Code Train Lectures/Codetrain/web2py app/web2py.app/Contents/MacOS/python (prefix: /Users/caponenoreaga/Desktop/Code Train Lectures/Codetrain/web2py app/web2py.app/Contents/Resources)'
+p129
+sS'etype'
+p130
+S"<class 'gluon.rocket.SocketTimeout'>"
+p131
+sS'date'
+p132
+S'Tue Apr 23 11:08:53 2019'
+p133
+sS'locals'
+p134
+(dp135
+S'sock_file'
+p136
+S'<socket._fileobject object>'
+p137
+sS'self'
+p138
+S'<WSGIWorker(Thread-54, started daemon 123145422921728)>'
+p139
+sssS'traceback'
+p140
+S'Traceback (most recent call last):\n  File "/Users/caponenoreaga/Desktop/Code Train Lectures/Codetrain/web2py app/web2py.app/Contents/Resources/gluon/rocket.py", line 1319, in run\n  File "/Users/caponenoreaga/Desktop/Code Train Lectures/Codetrain/web2py app/web2py.app/Contents/Resources/gluon/rocket.py", line 1812, in run_app\n  File "/Users/caponenoreaga/Desktop/Code Train Lectures/Codetrain/web2py app/web2py.app/Contents/Resources/gluon/rocket.py", line 1632, in build_environ\n  File "/Users/caponenoreaga/Desktop/Code Train Lectures/Codetrain/web2py app/web2py.app/Contents/Resources/gluon/rocket.py", line 1383, in read_request_line\nSocketTimeout: Socket timed out before request.\n'
+p141
+s.
